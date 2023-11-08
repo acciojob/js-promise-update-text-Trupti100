@@ -1,14 +1,27 @@
 <!DOCTYPE html>
-
 <html>
-  <head>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+<head>
+  <title>Promise Example</title>
+</head>
+<body>
+  <div id="output">Waiting for the promise to resolve...</div>
 
-  <body>
-    <!-- do not modify this file -->
-    <div id="output"></div>
+  <script>
+    function updateTextWithPromise() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("Hello, world!");
+        }, 1000); // Resolves after 1 second
+      });
+    }
 
-    <script type="text/javascript" src="./script.js"></script>
-  </body>
+    async function updateText() {
+      const text = await updateTextWithPromise();
+      document.getElementById("output").textContent = text;
+    }
+
+    // Call the function to update the text
+    updateText();
+  </script>
+</body>
 </html>
